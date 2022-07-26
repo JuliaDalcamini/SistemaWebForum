@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <h2>Login</h2>
+    <h1>Login</h1>
     <p>
     <form action="../controller/controllerLoginUsuario.php" method="get">
         Login: <input type="text" size="20" name="pLogin">
@@ -20,7 +20,7 @@
         <p><input type="submit" value="Login"> <input type="reset" value="Cancelar">
     </form>
     <p>
-        <p>Ainda não tem um cadastro?</p>
+        <a href="CadastroUsuario.php"><p>Ainda não tem um cadastro?</p></a>
         <?php
         if (isset($_REQUEST['erro'])) // verifica se o erro foi setado
         {

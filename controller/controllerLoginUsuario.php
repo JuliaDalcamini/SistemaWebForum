@@ -1,15 +1,14 @@
 <?php
-
+require_once '../dao/conexao.inc.php';
 
 function efetuarLogin($login,$senha){
 
     $con = new Conexao();
     $conexao = $con->getConexao();
 
-    $sql = $conexao->prepare("select * from usuarios where login = :usr and senha = :pass");
+    $sql = $conexao->prepare("select * from usuario where login = :usr and senha = :pass");
     
     $login = strtolower($login);
-    $senha = strtolower($senha);
     $sql->bindvalue(':usr',$login);
     $sql->bindvalue(':pass',$senha);
     $sql->execute();
@@ -24,4 +23,25 @@ function efetuarLogin($login,$senha){
     }    
 }
 
+//$tipo = $_REQUEST['pTipo'];
+$login = $_REQUEST['pLogin'];
+$senha = $_REQUEST['pSenha'];
+//if ($tipo == '1')
+{
+    $logado = efetuarLogin($login, $senha);
+    if($logado) // se achou o usuário, a função retorna true
+    {
+        session_start();
+        $_SESSION['logado'] = true;
+        //$_SESSION['tipousuario'] = '1';
+        header("Location: ../views/index.php");
+    }
+    else
+    {
+        header("Location: ../views/LoginUsuario.php?erro=1");
+    }
+}
+
 ?>
+
+

@@ -5,7 +5,7 @@ class Conexao
       private $servidor_mysql = 'localhost';
       private $nome_banco = 'webforum';
       private $usuario = 'root';
-      private $senha = 'aluno'; 
+      private $senha = ''; 
       private $con;
 
       public function getConexao()
