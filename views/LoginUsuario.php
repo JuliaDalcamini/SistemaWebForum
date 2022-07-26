@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <h1>Login</h1>
+    <h2>Login</h2>
     <p>
     <form action="../controller/controllerLoginUsuario.php" method="get">
         Login: <input type="text" size="20" name="pLogin">
