@@ -11,12 +11,26 @@ Server version : 5.0.41-community-nt
 
 create database if not exists `webforum`;
 
-USE `webforum`;
+
 
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 /*Table structure for table `assunto` */
+
+USE `webforum`;
+CREATE TABLE `post` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `idAssunto` int unsigned DEFAULT NULL,
+  `titulo` char(128) NOT NULL,
+  `conteudo` text,
+  `idUsuario` int unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idAssunto_idx` (`idAssunto`),
+  KEY `idUsuarioPost_idx` (`idUsuario`),
+  CONSTRAINT `idAssuntoPost` FOREIGN KEY (`idAssunto`) REFERENCES `assunto` (`id`),
+  CONSTRAINT `idUsuarioPost` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
 
 DROP TABLE IF EXISTS `assunto`;
 
@@ -33,12 +47,17 @@ CREATE TABLE `assunto` (
 DROP TABLE IF EXISTS `mensagem`;
 
 CREATE TABLE `mensagem` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `idAssunto` int(10) unsigned default NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `idPost` int unsigned DEFAULT NULL,
   `titulo` char(128) NOT NULL,
   `conteudo` text,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idUsuario` int unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idPostMensagem_idx` (`idPost`),
+  KEY `idUsuarioMensagem_idx` (`idUsuario`),
+  CONSTRAINT `idPostMensagem` FOREIGN KEY (`idPost`) REFERENCES `post` (`id`),
+  CONSTRAINT `idUsuarioMensagem` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
 
 /*Data for the table `mensagem` */
 

@@ -19,7 +19,7 @@
             $row = $sql->fetch(PDO::FETCH_OBJ);
 
             $assunto = new Assunto();
-            $assunto->setId($row->id);
+            $assunto->setidAssunto($row->id);
             $assunto->setTitulo($row->titulo);
 
             return $assunto;
@@ -31,12 +31,13 @@
 
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
                 $assunto = new Assunto();
-                $assunto->setId($row->id);
+                $assunto->setidAssunto($row->id);
                 $assunto->setTitulo($row->titulo);
 
                 $lista[] = $assunto;
             }
             return $lista;
         }
+        
     }
 ?>

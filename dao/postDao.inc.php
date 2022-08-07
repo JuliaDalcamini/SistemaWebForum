@@ -20,8 +20,8 @@
 
             $post = new Post();
             $post->setId($row->id);
-            $post->setIdAssunto($row->idAssunto);
-            $post->setIdUsuario($row->idUsuario);
+            $post->setAssunto($this->getAssunto($row->idAssunto));
+            $post->setUsuario($this->getUsuario($row->idUsuario));
             $post->setTitulo($row->titulo);
             $post->setConteudo($row->conteudo);
 
@@ -35,14 +35,56 @@
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
                 $post = new Post();
                 $post->setId($row->id);
-                $post->setIdAssunto($row->idAssunto);
-                $post->setIdUsuario($row->idUsuario);
+                $post->setAssunto($this->getAssunto($row->idAssunto));
+                $post->setUsuario($this->getUsuario($row->idUsuario));
                 $post->setTitulo($row->titulo);
                 $post->setConteudo($row->conteudo);
 
                 $lista[] = $post;
             }
             return $lista;
+        }
+
+        public function getPostAssunto($id) {
+            $sql = $this->con->prepare('SELECT * FROM post WHERE idAssunto = :id');
+            $lista = array();
+
+            $sql->bindValue(':id', $id);
+            $sql->execute();
+
+            while($row = $sql->fetch(PDO::FETCH_OBJ)) {
+                $post = new Post();
+                $post->setId($row->id);
+                $post->setAssunto($this->getAssunto($row->idAssunto));
+                $post->setUsuario($this->getUsuario($row->idUsuario));
+                $post->setTitulo($row->titulo);
+                $post->setConteudo($row->conteudo);
+
+                $lista[] = $post;
+            }
+            return $lista;
+        }
+
+        public function getUsuario($id) {
+            $sql = $this->con->prepare("SELECT nome FROM usuario where idUsuario = :id");
+
+            $sql->bindValue(':id', $id);
+            $sql->execute();
+
+            $user = $sql->fetch(PDO::FETCH_OBJ);
+
+            return $user->nome;
+        }
+
+        public function getAssunto($id) {
+            $sql = $this->con->prepare("SELECT titulo FROM assunto where id = :id");
+
+            $sql->bindValue(':id', $id);
+            $sql->execute();
+
+            $assunto = $sql->fetch(PDO::FETCH_OBJ);
+
+            return $assunto->titulo;
         }
     }
 ?>
