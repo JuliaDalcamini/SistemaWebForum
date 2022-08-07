@@ -2,8 +2,9 @@
 require_once 'includes/cabecalho.inc';
 require_once '../classes/assunto.inc.php';
 require_once '../classes/post.inc.php';
+require_once '../controller/controllerPosts.php';
 
-session_start();
+//session_start();
 $lista_assunto = $_SESSION['assuntos'];
 $lista_post = $_SESSION['posts'];
 
@@ -28,16 +29,16 @@ $lista_post = $_SESSION['posts'];
                          <?php
                          foreach ($lista_assunto as $assunto) {
                               echo "<dt>";
-                              echo "<dd><a href='../controller/controllerPost.php?opcao=1&id=" . $assunto->getId() . "'>" . $assunto->getTitulo() . "</a></dd>";
+                              echo "<dd><a href='../controller/controllerPosts.php?opcao=1&id=" . $assunto->getIdAssunto() . "'>" . $assunto->getTitulo() . "</a></dd>";
                          }
                          ?>
                     </dl>
                     <dl class="right">
-                         <dt>Últimos posts</dt>
+                         <dt>Últimos Posts</dt>
                          <?php
                          foreach ($lista_post as $post) {
                               echo "<dt>";
-                              echo "<dd>" . $post->getTitulo() . "</dd>";
+                              echo "<dd><a href='../controller/controllerPosts.php?opcao=2&id=" . $post->getId() . "'>" . $post->getTitulo() . "</a></dd>";
                          }
                          ?>
                     </dl>

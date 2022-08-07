@@ -2,15 +2,15 @@
     class Mensagem {
 
         public $id;
-        public Post $idPost;
-        public Usuario $idUsuario;
+        public $post;
+        public $usuario;
         public $titulo;
         public $conteudo;
 
-        function Menssagem($id, $idPost, $idUsuario, $titulo, $conteudo) {
+        function Menssagem($id, $post, $usuario, $titulo, $conteudo) {
             $this->id = $id;
-            $this->idPost = $idPost;
-            $this->idUsuario = $idUsuario;
+            $this->post = $post;
+            $this->usuario = $usuario;
             $this->titulo = $titulo;
             $this->conteudo = $conteudo;
         }
@@ -38,41 +38,41 @@
         }
 
         /**
-         * Get the value of idPost
+         * Get the value of post
          */ 
-        public function getIdPost()
+        public function getpost()
         {
-                return $this->idPost;
+                return $this->post;
         }
 
         /**
-         * Set the value of idPost
+         * Set the value of post
          *
          * @return  self
          */ 
-        public function setIdPost($idPost)
+        public function setpost($post)
         {
-                $this->idPost = $idPost;
+                $this->post = $post;
 
                 return $this;
         }
 
         /**
-         * Get the value of idUsuario
+         * Get the value of usuario
          */ 
-        public function getIdUsuario()
+        public function getusuario()
         {
-                return $this->idUsuario;
+                return $this->usuario;
         }
 
         /**
-         * Set the value of idUsuario
+         * Set the value of usuario
          *
          * @return  self
          */ 
-        public function setIdUsuario($idUsuario)
+        public function setusuario($usuario)
         {
-                $this->idUsuario = $idUsuario;
+                $this->usuario = $usuario;
 
                 return $this;
         }

@@ -2,15 +2,15 @@
     class Post {
 
         public $id;
-        public Assunto $idAssunto;
-        public Usuario $idUsuario;
+        public $assunto;
+        public $usuario;
         public $titulo;
         public $conteudo;
 
-        function Menssagem($id, $idAssunto, $idUsuario, $titulo, $conteudo) {
+        function Post($id, $assunto, $usuario, $titulo, $conteudo) {
             $this->id = $id;
-            $this->idAssunto = $idAssunto;
-            $this->idUsuario = $idUsuario;
+            $this->assunto = $assunto;
+            $this->usuario = $usuario;
             $this->titulo = $titulo;
             $this->conteudo = $conteudo;
         }
@@ -36,41 +36,41 @@
         }
 
         /**
-         * Get the value of idAssunto
+         * Get the value of assunto
          */ 
-        public function getIdAssunto()
+        public function getassunto()
         {
-                return $this->idAssunto;
+                return $this->assunto;
         }
 
         /**
-         * Set the value of idAssunto
+         * Set the value of assunto
          *
          * @return  self
          */ 
-        public function setIdAssunto($idAssunto)
+        public function setassunto($assunto)
         {
-                $this->idAssunto = $idAssunto;
+                $this->assunto = $assunto;
 
                 return $this;
         }
 
         /**
-         * Get the value of idUsuario
+         * Get the value of usuario
          */ 
-        public function getIdUsuario()
+        public function getusuario()
         {
-                return $this->idUsuario;
+                return $this->usuario;
         }
 
         /**
-         * Set the value of idUsuario
+         * Set the value of usuario
          *
          * @return  self
          */ 
-        public function setIdUsuario($idUsuario)
+        public function setusuario($usuario)
         {
-                $this->idUsuario = $idUsuario;
+                $this->usuario = $usuario;
 
                 return $this;
         }

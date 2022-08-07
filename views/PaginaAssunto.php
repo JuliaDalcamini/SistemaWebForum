@@ -7,7 +7,8 @@ require_once '../controller/controllerPosts.php';
 //session_start();
 $lista_assunto = $_SESSION['assuntos'];
 $lista_post = $_SESSION['posts'];
-$postp = $_SESSION['post'];
+$post_assunto = $_SESSION['post-assunto'];
+$assuntop = $_SESSION['assunto'];
 
 ?>
 
@@ -18,7 +19,7 @@ $postp = $_SESSION['post'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo "" . $postp->getTitulo() . "" ?></title>
+    <title><?php echo "" . $assuntop->getTitulo() . "" ?></title>
 </head>
 
 <body>
@@ -46,12 +47,16 @@ $postp = $_SESSION['post'];
             </div>
         </div>
     </aside>
-    <section id="estrutura-post">
-        <h2><?php echo "". $postp->getTitulo() .""?></h2>
-        <p id="usuario-post"><?php echo "". $postp->getUsuario() .""?></p>
-        <p id="conteudo-post">
-            <?php echo "". $postp->getConteudo() .""?>
-        </p>
+    <section id="estrutura-assunto">
+        <h2><?php echo "". $assuntop->getTitulo() .""?></h2>
+        <div></div>
+        <?php
+        foreach ($post_assunto as $postp) {
+            echo "<div><h3>". $postp->getTitulo() ."</h3>
+                    <p>". $postp->getUsuario() ."</p>
+                    <p>". $postp->getConteudo() ."</p></div>";
+        }
+        ?>
     </section>
 </body>
 

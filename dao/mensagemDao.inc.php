@@ -20,8 +20,8 @@
 
             $mensagem = new Mensagem();
             $mensagem->setId($row->id);
-            $mensagem->setIdPost($row->idPost);
-            $mensagem->setIdUsuario($row->idUsuario);
+            $mensagem->setpost($this->getPost($row->idPost));
+            $mensagem->setUsuario($this->getUsuario($row->idUsuario));
             $mensagem->setTitulo($row->titulo);
             $mensagem->setConteudo($row->conteudo);
 
@@ -35,14 +35,36 @@
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
                 $mensagem = new Mensagem();
                 $mensagem->setId($row->id);
-                $mensagem->setIdPost($row->idPost);
-                $mensagem->setIdUsuario($row->idUsuario);
+                $mensagem->setpost($this->getPost($row->idPost));
+                $mensagem->setUsuario($this->getUsuario($row->idUsuario));
                 $mensagem->setTitulo($row->titulo);
                 $mensagem->setConteudo($row->conteudo);
 
                 $lista[] = $mensagem;
             }
             return $lista;
+        }
+
+        public function getUsuario($id) {
+            $sql = $this->con->prepare("SELECT nome FROM usuario where idUsuario = :id");
+
+            $sql->bindValue(':id', $id);
+            $sql->execute();
+
+            $user = $sql->fetch(PDO::FETCH_OBJ);
+
+            return $user->nome;
+        }
+
+        public function getPost($id) {
+            $sql = $this->con->prepare("SELECT titulo FROM post where id = :id");
+
+            $sql->bindValue(':id', $id);
+            $sql->execute();
+
+            $post = $sql->fetch(PDO::FETCH_OBJ);
+
+            return $post->titulo;
         }
     }
 ?>

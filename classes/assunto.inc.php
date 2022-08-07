@@ -1,29 +1,29 @@
 <?php
     class Assunto {
-        public $id;
+        public $idAssunto;
         public $titulo;
 
-        function Assunto ($id, $titulo) {
-            $this->id = $id;
+        function Assunto ($idAssunto, $titulo) {
+            $this->idAssunto = $idAssunto;
             $this->titulo = $titulo;
         }
 
         /**
-         * Get the value of id
+         * Get the value of idAssunto
          */ 
-        public function getId()
+        public function getidAssunto()
         {
-                return $this->id;
+                return $this->idAssunto;
         }
 
         /**
-         * Set the value of id
+         * Set the value of idAssunto
          *
          * @return  self
          */ 
-        public function setId($id)
+        public function setidAssunto($idAssunto)
         {
-                $this->id = $id;
+                $this->idAssunto = $idAssunto;
 
                 return $this;
         }
