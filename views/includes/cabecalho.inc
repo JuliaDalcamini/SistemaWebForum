@@ -7,7 +7,7 @@
 </HEAD>
 <BODY>
 <div class="topo">
-<img src="imagens/capa12.png">
+<img src="">
 </div>
 
 <div class="barra">

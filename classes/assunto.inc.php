@@ -1,16 +1,11 @@
 <?php
-    class Menssagem {
-
+    class Assunto {
         public $id;
-        public $idAssunto;
         public $titulo;
-        public $conteudo;
 
-        function Menssagem($id, $idAssunto, $titulo, $conteudo) {
+        function Assunto ($id, $titulo) {
             $this->id = $id;
-            $this->idAssunto = $idAssunto;
             $this->titulo = $titulo;
-            $this->conteudo = $conteudo;
         }
 
         /**
@@ -22,11 +17,15 @@
         }
 
         /**
-         * Get the value of idAssunto
+         * Set the value of id
+         *
+         * @return  self
          */ 
-        public function getIdAssunto()
+        public function setId($id)
         {
-                return $this->idAssunto;
+                $this->id = $id;
+
+                return $this;
         }
 
         /**
@@ -38,11 +37,15 @@
         }
 
         /**
-         * Get the value of conteudo
+         * Set the value of titulo
+         *
+         * @return  self
          */ 
-        public function getConteudo()
+        public function setTitulo($titulo)
         {
-                return $this->conteudo;
+                $this->titulo = $titulo;
+
+                return $this;
         }
     }
 ?>
