@@ -17,7 +17,7 @@
     <form action="../controller/controllerLoginUsuario.php" method="get">
         Login: <input type="text" size="20" name="pLogin">
         <p>Senha: <input type="text" size="10" name="pSenha">
-        <p><input type="submit" value="Login"> <input type="reset" value="Cancelar">
+        <p><input type="submit" value="Login">
     </form>
     <p>
         <a href="CadastroUsuario.php"><p>Ainda não tem um cadastro?</p></a>
