@@ -1,6 +1,7 @@
 <?php
  require_once "conexao.inc.php";
  require_once "../classes/post.inc.php";
+ require_once "mensagemDao.inc.php";
 
     class PostDao{
         private $con;
@@ -19,7 +20,7 @@
             $row = $sql->fetch(PDO::FETCH_OBJ);
 
             $post = new Post();
-            $post->setId($row->id);
+            $post->setIdPost($row->id);
             $post->setAssunto($this->getAssunto($row->idAssunto));
             $post->setUsuario($this->getUsuario($row->idUsuario));
             $post->setTitulo($row->titulo);
@@ -34,7 +35,7 @@
 
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
                 $post = new Post();
-                $post->setId($row->id);
+                $post->setIdPost($row->id);
                 $post->setAssunto($this->getAssunto($row->idAssunto));
                 $post->setUsuario($this->getUsuario($row->idUsuario));
                 $post->setTitulo($row->titulo);
@@ -54,7 +55,7 @@
 
             while($row = $sql->fetch(PDO::FETCH_OBJ)) {
                 $post = new Post();
-                $post->setId($row->id);
+                $post->setIdPost($row->id);
                 $post->setAssunto($this->getAssunto($row->idAssunto));
                 $post->setUsuario($this->getUsuario($row->idUsuario));
                 $post->setTitulo($row->titulo);
@@ -63,6 +64,19 @@
                 $lista[] = $post;
             }
             return $lista;
+        }
+
+        public function excluirPost($idPost)
+        {
+            $msgDao = new MensagemDao();
+            $listaMensagens = $msgDao->getMensagensPost($idPost);
+            foreach ($listaMensagens as $msg) {
+                $msgDao->excluirMensagem($msg->getidMensagem());
+            }
+            
+            $sql = $this->con->prepare("delete from post where id=:id");
+            $sql->bindValue(':id',$idPost);
+            $sql->execute();
         }
 
         public function getUsuario($id) {

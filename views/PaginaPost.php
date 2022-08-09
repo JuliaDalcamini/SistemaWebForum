@@ -8,6 +8,9 @@ require_once '../controller/controllerPosts.php';
 $lista_assunto = $_SESSION['assuntos'];
 $lista_post = $_SESSION['posts'];
 $postp = $_SESSION['post'];
+$usuario = $_SESSION['usuario'];
+$mensagens = $_SESSION['mensagens'];
+$estado = $_SESSION['logado'];
 
 ?>
 
@@ -30,7 +33,7 @@ $postp = $_SESSION['post'];
                     <?php
                     foreach ($lista_assunto as $assunto) {
                         echo "<dt>";
-                        echo "<dd><a href='../controller/controllerPosts.php?opcao=1&id=" . $assunto->getIdAssunto() . "'>" . $assunto->getTitulo() . "</a></dd>";
+                        echo "<dd><a href='../controller/controllerPosts.php?opcao=1&idAssunto=" . $assunto->getIdAssunto() . "'>" . $assunto->getTitulo() . "</a></dd>";
                     }
                     ?>
                 </dl>
@@ -39,7 +42,7 @@ $postp = $_SESSION['post'];
                     <?php
                     foreach ($lista_post as $post) {
                         echo "<dt>";
-                        echo "<dd><a href='../controller/controllerPosts.php?opcao=2&id=" . $post->getId() . "'>" . $post->getTitulo() . "</a></dd>";
+                        echo "<dd><a href='../controller/controllerPosts.php?opcao=2&idPost=" . $post->getIdPost() . "'>" . $post->getTitulo() . "</a></dd>";
                     }
                     ?>
                 </dl>
@@ -47,11 +50,44 @@ $postp = $_SESSION['post'];
         </div>
     </aside>
     <section id="estrutura-post">
-        <h2><?php echo "". $postp->getTitulo() .""?></h2>
-        <p id="usuario-post"><?php echo "". $postp->getUsuario() .""?></p>
+        <h2><?php echo "" . $postp->getTitulo() . "" ?></h2>
+        <p id="usuario-post"><?php echo " Autor: " . $postp->getUsuario() . "" ?></p>
         <p id="conteudo-post">
-            <?php echo "". $postp->getConteudo() .""?>
+            <?php echo "" . $postp->getConteudo() . "" ?>
         </p>
+    </section>
+    <section id="estrutura-respostas">
+        <?php
+        if (!isset($mensagens) || sizeof($mensagens) == 0) {
+            echo "<p>Nenhuma resposta ainda.</p>";
+        } else {
+            foreach ($mensagens as $msg) {
+                echo "<br><div><h3>" . $msg->getTitulo() . "</h3>
+                    <p id='usuario-msg'> Autor: " . $msg->getUsuario() . "</p>
+                    <p id='conteudo-msg'>" . $msg->getConteudo() . "</p></div><br>";
+            }
+        }
+        ?>
+    </section>
+    <section id="estrutura-msg">
+        <?php
+        if ($estado == false || $usuario == null) {
+            echo "<p>Você deve estar logado para poder responder nesse tópico.</p>";
+            echo "<a href='LoginUsuario.php'><p>Fazer Login</p></a>";
+        } else {
+        ?>
+            <p>Sua resposta:</p>
+            <form action="../controller/controllerPosts.php" method="post">
+                <br>Título: <input type="text" size="20" name="titulo"><br>
+                <input type="hidden" name="idUsuario" value=<?php echo "" . $usuario->getIdUsuario() . "" ?>>
+                <input type="hidden" name="idPost" value=<?php echo "" . $postp->getIdPost() . "" ?>>
+                <br>Mensagem: <textarea id="ctd-msg" name="conteudo" cols=10 rows=6></textarea><br>
+                <input type="hidden" name="opcao" value="3">
+                <input type=submit value="Enviar">
+            </form>
+        <?php
+        }
+        ?>
     </section>
 </body>
 

@@ -1,14 +1,17 @@
 <?php
     class Post {
 
-        public $id;
+        public $idPost;
         public $assunto;
         public $usuario;
         public $titulo;
         public $conteudo;
 
-        function Post($id, $assunto, $usuario, $titulo, $conteudo) {
-            $this->id = $id;
+        function Post() {
+
+        }
+
+        function setPost($assunto, $usuario, $titulo, $conteudo) {
             $this->assunto = $assunto;
             $this->usuario = $usuario;
             $this->titulo = $titulo;
@@ -16,21 +19,21 @@
         }
 
         /**
-         * Get the value of id
+         * Get the value of idPost
          */ 
-        public function getId()
+        public function getidPost()
         {
-                return $this->id;
+                return $this->idPost;
         }
 
         /**
-         * Set the value of id
+         * Set the value of idPost
          *
          * @return  self
          */ 
-        public function setId($id)
+        public function setidPost($idPost)
         {
-                $this->id = $id;
+                $this->idPost = $idPost;
 
                 return $this;
         }

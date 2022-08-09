@@ -3,8 +3,11 @@
         public $idAssunto;
         public $titulo;
 
-        function Assunto ($idAssunto, $titulo) {
-            $this->idAssunto = $idAssunto;
+        function Assunto() {
+
+        }
+
+        function setAssunto ($titulo) {
             $this->titulo = $titulo;
         }
 
