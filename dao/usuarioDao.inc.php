@@ -1,6 +1,6 @@
 <?php
  require_once "conexao.inc.php";
- require_once "../classes/usuario.php";
+ require_once "../classes/usuario.inc.php";
 
     class UsuarioDao{
         private $con;
@@ -20,6 +20,57 @@
             $sql->execute();
         }
 
+        public function getUsuario($id) {
+            $sql = $this->con->prepare('SELECT * FROM usuario WHERE idUsuario = :id');
 
+            $sql->bindValue(':id',$id);
+            $sql->execute();
+
+            $row = $sql->fetch(PDO::FETCH_OBJ);
+
+            $usuario = new Usuario();
+            $usuario->setIdUsuario($row->idUsuario);
+            $usuario->setLogin($row->login);
+            $usuario->setNome($row->nome);
+            $usuario->setEmail($row->email);
+            $usuario->setSenha($row->senha);
+
+            return $usuario;
+        }
+
+        public function getUsuarios() {
+            $sql = $this->con->prepare('SELECT * FROM usuario');
+            $lista = array();
+
+            while($row = $sql->fetch(PDO::FETCH_OBJ)) {
+                $usuario = new Usuario();
+                $usuario->setIdUsuario($row->idUsuario);
+                $usuario->setLogin($row->login);
+                $usuario->setNome($row->nome);
+                $usuario->setEmail($row->email);
+                $usuario->setSenha($row->senha);
+
+                $lista[] = $usuario;
+            }
+            return $lista;
+        }
+
+        public function getUsuarioLogin($login) {
+            $sql = $this->con->prepare('SELECT * FROM usuario WHERE login = :login');
+
+            $sql->bindValue(':login',$login);
+            $sql->execute();
+
+            $row = $sql->fetch(PDO::FETCH_OBJ);
+
+            $usuario = new Usuario();
+            $usuario->setIdUsuario($row->idUsuario);
+            $usuario->setLogin($row->login);
+            $usuario->setNome($row->nome);
+            $usuario->setEmail($row->email);
+            $usuario->setSenha($row->senha);
+
+            return $usuario;
+        }
 }
 ?>

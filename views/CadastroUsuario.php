@@ -3,7 +3,7 @@
 <form action="../controller/controllerCadastro.php" method="post">
     <p>Login: <input type="text" size="13" name="pLogin"></p>
 
-    <p>Senha: <input type="text" size="10" name="pSenha"></p>
+    <p>Senha: <input type="password" size="10" name="pSenha"></p>
 
     <p>Email: <input type="email" size="25" name="pEmail"></p>
 

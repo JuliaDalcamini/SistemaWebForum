@@ -1,14 +1,17 @@
 <?php
     class Mensagem {
 
-        public $id;
+        public $idMensagem;
         public $post;
         public $usuario;
         public $titulo;
         public $conteudo;
 
-        function Menssagem($id, $post, $usuario, $titulo, $conteudo) {
-            $this->id = $id;
+        function Mensagem() {
+
+        }
+
+        function setMensagem($post, $usuario, $titulo, $conteudo) {
             $this->post = $post;
             $this->usuario = $usuario;
             $this->titulo = $titulo;
@@ -18,21 +21,21 @@
         
 
         /**
-         * Get the value of id
+         * Get the value of idMensagem
          */ 
-        public function getId()
+        public function getidMensagem()
         {
-                return $this->id;
+                return $this->idMensagem;
         }
 
         /**
-         * Set the value of id
+         * Set the value of idMensagem
          *
          * @return  self
          */ 
-        public function setId($id)
+        public function setidMensagem($idMensagem)
         {
-                $this->id = $id;
+                $this->idMensagem = $idMensagem;
 
                 return $this;
         }

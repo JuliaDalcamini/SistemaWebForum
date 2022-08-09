@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/cabecalho.inc';
+require_once 'includes/cabecalho.inc.php';
 require_once '../classes/assunto.inc.php';
 require_once '../classes/post.inc.php';
 require_once '../controller/controllerPosts.php';
@@ -21,7 +21,7 @@ $lista_post = $_SESSION['posts'];
 </head>
 
 <body>
-     <div id="main">
+     <aside id="main">
           <div id="left">
                <div id="top">
                     <dl class="left">
@@ -29,23 +29,22 @@ $lista_post = $_SESSION['posts'];
                          <?php
                          foreach ($lista_assunto as $assunto) {
                               echo "<dt>";
-                              echo "<dd><a href='../controller/controllerPosts.php?opcao=1&id=" . $assunto->getIdAssunto() . "'>" . $assunto->getTitulo() . "</a></dd>";
+                              echo "<dd><a href='../controller/controllerPosts.php?opcao=1&idAssunto=" . $assunto->getIdAssunto() . "'>" . $assunto->getTitulo() . "</a></dd>";
                          }
                          ?>
                     </dl>
                     <dl class="right">
-                         <dt>Últimos Posts</dt>
+                         <dt>Últimos posts</dt>
                          <?php
                          foreach ($lista_post as $post) {
                               echo "<dt>";
-                              echo "<dd><a href='../controller/controllerPosts.php?opcao=2&id=" . $post->getId() . "'>" . $post->getTitulo() . "</a></dd>";
+                              echo "<dd><a href='../controller/controllerPosts.php?opcao=2&idPost=" . $post->getIdPost() . "'>" . $post->getTitulo() . "</a></dd>";
                          }
                          ?>
                     </dl>
-                    <div id="topbottom"> </div>
                </div>
           </div>
-     </div>
+     </aside>
 </body>
 
 </html>

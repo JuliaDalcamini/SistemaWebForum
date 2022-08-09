@@ -31,7 +31,7 @@ $assuntop = $_SESSION['assunto'];
                     <?php
                     foreach ($lista_assunto as $assunto) {
                         echo "<dt>";
-                        echo "<dd><a href='../controller/controllerPosts.php?opcao=1&id=" . $assunto->getIdAssunto() . "'>" . $assunto->getTitulo() . "</a></dd>";
+                        echo "<dd><a href='../controller/controllerPosts.php?opcao=1&idAssunto=" . $assunto->getIdAssunto() . "'>" . $assunto->getTitulo() . "</a></dd>";
                     }
                     ?>
                 </dl>
@@ -40,7 +40,7 @@ $assuntop = $_SESSION['assunto'];
                     <?php
                     foreach ($lista_post as $post) {
                         echo "<dt>";
-                        echo "<dd><a href='../controller/controllerPosts.php?opcao=2&id=" . $post->getId() . "'>" . $post->getTitulo() . "</a></dd>";
+                        echo "<dd><a href='../controller/controllerPosts.php?opcao=2&idPost=" . $post->getIdPost() . "'>" . $post->getTitulo() . "</a></dd>";
                     }
                     ?>
                 </dl>
@@ -48,13 +48,15 @@ $assuntop = $_SESSION['assunto'];
         </div>
     </aside>
     <section id="estrutura-assunto">
-        <h2><?php echo "". $assuntop->getTitulo() .""?></h2>
+        <h2><?php echo "" . $assuntop->getTitulo() . "" ?></h2>
         <div></div>
         <?php
         foreach ($post_assunto as $postp) {
-            echo "<div><h3>". $postp->getTitulo() ."</h3>
-                    <p>". $postp->getUsuario() ."</p>
-                    <p>". $postp->getConteudo() ."</p></div>";
+            echo "<a href='../controller/controllerPosts.php?opcao=2&idPost=" . $postp->getIdPost() . "'>
+                    <div><h3>" . $postp->getTitulo() . "</h3>
+                    <p id='usuario-assunto'> Autor: " . $postp->getUsuario() . "</p>
+                    <p id='conteudo-assunto'>" . $postp->getConteudo() . "</p></div>
+                    </a>";
         }
         ?>
     </section>
