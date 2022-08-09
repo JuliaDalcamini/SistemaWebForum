@@ -7,6 +7,7 @@ require_once '../controller/controllerPosts.php';
 //session_start();
 $lista_assunto = $_SESSION['assuntos'];
 $lista_post = $_SESSION['posts'];
+$estado = $_SESSION['logado'];
 
 ?>
 
@@ -21,6 +22,11 @@ $lista_post = $_SESSION['posts'];
 </head>
 
 <body>
+     <?php
+          if ($estado == true) {
+               echo "<a href='../controller/controllerLoginUsuario.php?pTipo=2'>Sair</a>";
+          }
+     ?>
      <aside id="main">
           <div id="left">
                <div id="top">

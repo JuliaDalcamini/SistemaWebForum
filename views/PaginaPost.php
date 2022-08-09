@@ -25,6 +25,11 @@ $estado = $_SESSION['logado'];
 </head>
 
 <body>
+    <?php
+    if ($estado == true) {
+        echo "<a href='../controller/controllerLoginUsuario.php?pTipo=2'>Sair</a>";
+    }
+    ?>
     <aside id="main">
         <div id="left">
             <div id="top">
@@ -77,6 +82,7 @@ $estado = $_SESSION['logado'];
         } else {
         ?>
             <p>Sua resposta:</p>
+            <p><img id="icon-avatar" src="imagens/avatar/<?php echo $usuario->getAvatar(); ?>.jpg"><?php echo "" . $usuario->getLogin() . "" ?></p>
             <form action="../controller/controllerPosts.php" method="post">
                 <br>Título: <input type="text" size="20" name="titulo"><br>
                 <input type="hidden" name="idUsuario" value=<?php echo "" . $usuario->getIdUsuario() . "" ?>>

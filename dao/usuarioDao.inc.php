@@ -11,12 +11,14 @@
         }
 
         public function incluirUsuario($usuario){
-            $sql = $this->con->prepare("insert into usuario (nome,email,login,senha) values (:nom,:em,:logi,:sen)");
+            $sql = $this->con->prepare("insert into usuario (nome,email,login,senha,csenha,avatar) values (:nom,:em,:logi,:sen,:csen,:avat)");
 
             $sql->bindValue(":nom",$usuario->getNome());
             $sql->bindValue(":em",$usuario->getEmail());
             $sql->bindValue(":logi",$usuario->getLogin());
             $sql->bindValue(":sen",$usuario->getSenha());
+            $sql->bindValue(":csen",$usuario->getCSenha());
+            $sql->bindValue(":avat",$usuario->getAvatar());
             $sql->execute();
         }
 
@@ -34,6 +36,8 @@
             $usuario->setNome($row->nome);
             $usuario->setEmail($row->email);
             $usuario->setSenha($row->senha);
+            $usuario->setCSenha($row->csenha);
+            $usuario->setAvatar($row->avatar);
 
             return $usuario;
         }
@@ -49,16 +53,18 @@
                 $usuario->setNome($row->nome);
                 $usuario->setEmail($row->email);
                 $usuario->setSenha($row->senha);
+                $usuario->setCSenha($row->csenha);
+                $usuario->setAvatar($row->avatar);
 
                 $lista[] = $usuario;
             }
             return $lista;
         }
 
-        public function getUsuarioLogin($login) {
-            $sql = $this->con->prepare('SELECT * FROM usuario WHERE login = :login');
+        public function getUsuarioEmail($email) {
+            $sql = $this->con->prepare('SELECT * FROM usuario WHERE email = :email');
 
-            $sql->bindValue(':login',$login);
+            $sql->bindValue(':email',$email);
             $sql->execute();
 
             $row = $sql->fetch(PDO::FETCH_OBJ);
@@ -69,6 +75,8 @@
             $usuario->setNome($row->nome);
             $usuario->setEmail($row->email);
             $usuario->setSenha($row->senha);
+            $usuario->setCSenha($row->csenha);
+            $usuario->setAvatar($row->avatar);
 
             return $usuario;
         }

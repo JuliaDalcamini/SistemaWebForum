@@ -9,7 +9,7 @@ $lista_assunto = $_SESSION['assuntos'];
 $lista_post = $_SESSION['posts'];
 $post_assunto = $_SESSION['post-assunto'];
 $assuntop = $_SESSION['assunto'];
-
+$estado = $_SESSION['logado'];
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +23,11 @@ $assuntop = $_SESSION['assunto'];
 </head>
 
 <body>
+    <?php
+    if ($estado == true) {
+        echo "<a href='../controller/controllerLoginUsuario.php?pTipo=2'>Sair</a>";
+    }
+    ?>
     <aside id="main">
         <div id="left">
             <div id="top">

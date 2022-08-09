@@ -15,7 +15,7 @@
     <h1>Login</h1>
     <p>
     <form action="../controller/controllerLoginUsuario.php" method="get">
-        Login: <input type="text" size="20" name="pLogin">
+        E-mail: <input type="text" size="20" name="pEmail">
         <p>Senha: <input type="password" size="10" name="pSenha">
         <p><input type="submit" value="Login">
     </form>
