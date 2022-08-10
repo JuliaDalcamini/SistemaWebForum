@@ -6,16 +6,19 @@ class Usuario{
     private $email;
     private $login;
     private $senha;
-    
+    private $csenha;
+    private $avatar;
     function Usuario() {
         
     }
 
-    public function setUsuario($nom,$em,$log,$sen){
+    public function setUsuario($nom,$em,$log,$sen,$csen,$avat){
         $this->nome = $nom;
         $this->email = $em;
         $this->login = $log;
         $this->senha = $sen;
+        $this->csenha = $csen;
+        $this->avatar = $avat;
     }
     
 
@@ -115,6 +118,46 @@ class Usuario{
     public function setSenha($senha)
     {
         $this->senha = $senha;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of csenha
+     */ 
+    public function getCsenha()
+    {
+        return $this->csenha;
+    }
+
+    /**
+     * Set the value of csenha
+     *
+     * @return  self
+     */ 
+    public function setCsenha($csenha)
+    {
+        $this->csenha = $csenha;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of avatar
+     */ 
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Set the value of avatar
+     *
+     * @return  self
+     */ 
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

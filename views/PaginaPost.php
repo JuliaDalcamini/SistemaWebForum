@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/cabecalho.inc.php';
+require_once 'includes/cabecalho.inc';
 require_once '../classes/assunto.inc.php';
 require_once '../classes/post.inc.php';
 require_once '../controller/controllerPosts.php';
@@ -25,6 +25,11 @@ $estado = $_SESSION['logado'];
 </head>
 
 <body>
+    <?php
+    if ($estado == true) {
+        echo "<a href='../controller/controllerLoginUsuario.php?pTipo=2' class='btn btn-primary'>Sair</a>";
+    }
+    ?>
     <aside id="main">
         <div id="left">
             <div id="top">
@@ -77,11 +82,12 @@ $estado = $_SESSION['logado'];
         } else {
         ?>
             <p>Sua resposta:</p>
+            <p><img id="icon-avatar" src="imagens/avatar/<?php echo $usuario->getAvatar(); ?>.jpg"><?php echo "" . $usuario->getLogin() . "" ?></p>
             <form action="../controller/controllerPosts.php" method="post">
                 <br>Título: <input type="text" size="20" name="titulo"><br>
                 <input type="hidden" name="idUsuario" value=<?php echo "" . $usuario->getIdUsuario() . "" ?>>
                 <input type="hidden" name="idPost" value=<?php echo "" . $postp->getIdPost() . "" ?>>
-                <br>Mensagem: <textarea id="ctd-msg" name="conteudo" cols=10 rows=6></textarea><br>
+                <br>Mensagem: <textarea id="ctd-msg" name="conteudo" cols=10 rows=10></textarea><br>
                 <input type="hidden" name="opcao" value="3">
                 <input type=submit value="Enviar">
             </form>

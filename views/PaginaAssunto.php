@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/cabecalho.inc.php';
+require_once 'includes/cabecalho.inc';
 require_once '../classes/assunto.inc.php';
 require_once '../classes/post.inc.php';
 require_once '../controller/controllerPosts.php';
@@ -9,7 +9,7 @@ $lista_assunto = $_SESSION['assuntos'];
 $lista_post = $_SESSION['posts'];
 $post_assunto = $_SESSION['post-assunto'];
 $assuntop = $_SESSION['assunto'];
-
+$estado = $_SESSION['logado'];
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,12 @@ $assuntop = $_SESSION['assunto'];
     <title><?php echo "" . $assuntop->getTitulo() . "" ?></title>
 </head>
 
-<body>
+<body class="body2">
+    <?php
+    if ($estado == true) {
+        echo "<a href='../controller/controllerLoginUsuario.php?pTipo=2' class='btn btn-primary'>Sair</a>";
+    }
+    ?>
     <aside id="main">
         <div id="left">
             <div id="top">
