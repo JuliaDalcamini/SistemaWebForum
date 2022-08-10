@@ -14,9 +14,53 @@ div.topo
 	height:100%;
 }
 
+div.barra
+{
+  height: 6%;
+  width: auto;
+  background-color: #393E8F;
+}
+
 div.corpo{
   height: 60%;
   width: auto;
   line-height: 2em;
 
+}
+
+.body{
+  background-color: black;
+  background-size: contain;
+  background-position: bottom;
+  height: auto;
+}
+
+.body2 {
+  background-color: white;
+  opacity: 0.9;
+  height: auto;
+  position: relative;
+  width: 80%;
+  right: 10%;
+  left: 10%;
+  text-align: center;
+
+}
+
+.rodape {
+ position: sticky;
+ bottom: 0%;
+ background-color:  #B12228;
+ color: #F3CC64;
+ width: 100%;
+ text-align: center;
+ max-height: 100px;
+}
+
+#estrutura-msg {
+  align-content: center;
+}
+
+#ctd-msg {
+  resize: none;
 }

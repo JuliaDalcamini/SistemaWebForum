@@ -1,5 +1,5 @@
 <?php
-
+require_once 'includes/cabecalho.inc';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -11,25 +11,35 @@
     <title>Login</title>
 </head>
 
-<body>
-    <h1>Login</h1>
-    <p>
-    <form action="../controller/controllerLoginUsuario.php" method="get">
-        E-mail: <input type="text" size="20" name="pEmail">
-        <p>Senha: <input type="password" size="10" name="pSenha">
-        <p><input type="submit" value="Login">
-    </form>
-    <p>
-        <a href="CadastroUsuario.php"><p>Ainda não tem um cadastro?</p></a>
-        <?php
-        if (isset($_REQUEST['erro'])) // verifica se o erro foi setado
-        {
-            if ((int)($_REQUEST['erro']) == 1) // captura e ver o tipo do erro, no caso, 1
-                echo "<b><font face='Verdana' size='2' color='red'>Login Incorreto!</font><b>";
-            else if ((int)($_REQUEST['erro']) == 2)
-                echo "<b><font face='Verdana' size='2' color='blue'>Por favor, efetue seu login!</font><b>";
-        }
-        ?>
+<body class="body" style="background-image: url('imagens/fundo1.jpg');">
+    <div class="body2">
+        <h1>Login</h1>
+        <p>
+        <form action="../controller/controllerLoginUsuario.php" method="get">
+            <div class="col-md-6 offset-md-3">
+                E-mail: <input type="text" size="20" name="pEmail" class="form-control">
+                <p>Senha: <input type="password" size="10" name="pSenha" class="form-control"></p>
+                <p><button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+        <p>
+            <a href="CadastroUsuario.php">
+                <p>Ainda não tem um cadastro?</p>
+            </a>
+            <?php
+            if (isset($_REQUEST['erro'])) // verifica se o erro foi setado
+            {
+                if ((int)($_REQUEST['erro']) == 1) // captura e ver o tipo do erro, no caso, 1
+                    echo "<b><font face='Verdana' size='2' color='red'>Login Incorreto!</font><b>";
+                else if ((int)($_REQUEST['erro']) == 2)
+                    echo "<b><font face='Verdana' size='2' color='blue'>Por favor, efetue seu login!</font><b>";
+            }
+            ?>
+    </div>
 </body>
 
 </html>
+
+<?php
+require_once 'includes/rodape.inc';
+?>
